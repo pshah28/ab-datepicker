@@ -1,6 +1,11 @@
 /*!
+<<<<<<< HEAD
  * Accessible Datepicker v2.1.9
  * Copyright 2015-2017 Eureka2, Jacques Archimède.
+=======
+ * Accessible Datepicker v2.1.6
+ * Copyright 2015 Eureka2, Jacques Archimède.
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
  * Based on the example of the Open AJAX Alliance Accessibility Tools Task Force : http://www.oaa-accessibility.org/examplep/datepicker1/
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * Inspired by :
@@ -29,6 +34,7 @@
  *
  *	Keyboard navigation on days that are not included the currently displayed month should move to the month automatically and lead to the day in the next or previous month.
  *
+<<<<<<< HEAD
  *		- Tab - Like other widgets, the date picker widget receives focus by tabbing into it. Once focus is received, focus is repositioned on today's date in a grid of days and weeks. A second tab will take the user out of the date picker widget. Focus initially is placed on today's date.
  *		- Shift+Tab - reverses the direction of the tab order. Once in the widget, a Shift+Tab will take the user to the previous focusable element in the tab order.
  *		- Up Arrow and Down Arrow - goes to the same day of the week in the previous or next week respectively. If the user advances past the end of the month they continue into the next or previous month as appropriate.
@@ -46,11 +52,31 @@
  *			If the the calendar is a popup attached to some other widget (e.g., a text field), then Enter dismisses the popup, and the selected date(s) are shown in the associated widget.
  *			If the calendar is a static region on the page, then Enter confirms the selected date(s).
  *		- Escape - in the case of a popup date picker, closes the widget without any action.
+=======
+ *	    - Tab - Like other widgets, the date picker widget receives focus by tabbing into it. Once focus is received, focus is repositioned on today's date in a grid of days and weeks. A second tab will take the user out of the date picker widget. Focus initially is placed on today's date.
+ *	    - Shift+Tab - reverses the direction of the tab order. Once in the widget, a Shift+Tab will take the user to the previous focusable element in the tab order.
+ *	    - Up Arrow and Down Arrow - goes to the same day of the week in the previous or next week respectively. If the user advances past the end of the month they continue into the next or previous month as appropriate.
+ *	    - Left Arrow and Right Arrow - advances one day to the next, also in a continuum. Visually focus is moved from day to day and wraps from row to row in a grid of days and weeks.
+ *	    - Alt+Page Up - Moves to the same date in the previous year.
+ *	    - Alt+Page Down - Moves to the same date in the next year.
+ *	    - Space -
+ *	        Singleton Mode: acts as a toggle either selecting or deselecting the date.
+ *	        Contiguous Mode: Similar to selecting a range of text. Space selects the first date. Shift+Arrows add to the selection. Pressing Space again deselects the previous selections and selects the current focused date.
+ *	    - Home - Moves to the first day of the current month.
+ *	    - End - Moves to the last day of the current month.
+ *	    - Page Up - Moves to the same date in the previous month.
+ *	    - Page Down - Moves to the same date in the next month.
+ *	    - Enter -
+ *	        If the the calendar is a popup attached to some other widget (e.g., a text field), then Enter dismisses the popup, and the selected date(s) are shown in the associated widget.
+ *	        If the calendar is a static region on the page, then Enter confirms the selected date(s).
+ *	    - Escape - in the case of a popup date picker, closes the widget without any action.
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
  *
  *
  *	WAI-ARIA Roles, States, and Properties:
  *	======================================
  *
+<<<<<<< HEAD
  *		The current month has a label representing the month and year. It is advisable to use a role heading but is not essential. This "label" should have a unique ID.
  *		If the author would like to ensure that a label is announced by a screen reader, as the label changes, include live region properties with the label element: aria-live="assertive" and aria-atomic="true".
  *		The container for the day of week headers and numeric days of the week has a role of grid.
@@ -59,6 +85,16 @@
  *		Each numeric day of the week has the role gridcell.
  *		When a day is selected its aria-selected is set to true, otherwise it is set to false or removed.
  *		Changes in aria states, identified here, as well as focus, are clearly styled to show the user where their point of regard is and what days are selected.
+=======
+ *	    The current month has a label representing the month and year. It is advisable to use a role heading but is not essential. This "label" should have a unique ID.
+ *	    If the author would like to ensure that a label is announced by a screen reader, as the label changes, include live region properties with the label element: aria-live="assertive" and aria-atomic="true".
+ *	    The container for the day of week headers and numeric days of the week has a role of grid.
+ *	    The grid has an aria-labelledby property with a value equivalent to the id of the label for the grid.
+ *	    Each name for the day of the week has a role columnheader and is not navigable via the keyboard.
+ *	    Each numeric day of the week has the role gridcell.
+ *	    When a day is selected its aria-selected is set to true, otherwise it is set to false or removed.
+ *	    Changes in aria states, identified here, as well as focus, are clearly styled to show the user where their point of regard is and what days are selected.
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
  *
  *	When the datepicker is active a calender day of the week always has focus.
  *	This can be achieved by setting the tabindex on that day as appropriate and then using script to give it focus.
@@ -387,7 +423,10 @@
 			this.$calendar.css({position: 'relative', left: '0px'});
 			this.initializeDate();
 		} else {
+<<<<<<< HEAD
 			this.$calendar.css({display: 'none'});
+=======
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 			this.$target.parent().after(this.$calendar);
 			this.hide(!this.options.gainFocusOnConstruction);
 		}
@@ -436,7 +475,11 @@
 		});
 	}
 
+<<<<<<< HEAD
 	Datepicker.VERSION  = '2.1.9'
+=======
+	Datepicker.VERSION  = '2.1.6'
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 
 	Datepicker.DEFAULTS = {
 		firstDayOfWeek: Date.dp_locales.firstday_of_week, // Determines the first column of the calendar grid
@@ -653,18 +696,25 @@
 			var date = new Date(this.year, this.month, curDay, 0, 0, 0, 0);
 			var longdate = this.formatDate(date, this.options.titleFormat);
 			var curDayClass = curDay == this.date && this.month == this.curMonth && this.year == this.curYear ? ' curDay' : '';
+<<<<<<< HEAD
 			if (isYearDisabled || isMonthDisabled) {
 				gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
 			} else if ($.inArray(weekday, this.options.daysOfWeekDisabled) > -1) {
+=======
+			if ($.inArray(weekday, this.options.daysOfWeekDisabled) > -1) {
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 				gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
 			} else if (this.options.min != null && date < this.options.min) {
 				gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
 			} else if (this.options.max != null && date > this.options.max) {
 				gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
+<<<<<<< HEAD
 			} else if ($.inArray(this.format(date), this.options.datesDisabled) > -1) {
 				gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
 			} else if (this.options.isDateDisabled && this.options.isDateDisabled(date)) {
 				gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day unselectable' + curDayClass + '"';
+=======
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 			} else {
 				gridCells += '\t\t<td id="cell' + curDay + '-' + this.id + '" class="day selectable' + curDayClass + '"';
 			}
@@ -746,8 +796,11 @@
 				gridCells += '\t\t<td id="cell' + (curMonth + 1) + '-' + this.id + '" class="month unselectable"';
 			} else if (this.options.max != null && (this.year > this.options.max.getFullYear() || (this.year == this.options.max.getFullYear() && curMonth > this.options.max.getMonth()))) {
 				gridCells += '\t\t<td id="cell' + (curMonth + 1) + '-' + this.id + '" class="month unselectable"';
+<<<<<<< HEAD
 			} else if (this.options.isMonthDisabled && this.options.isMonthDisabled(this.year, curMonth + 1)) {
 				gridCells += '\t\t<td id="cell' + (curMonth + 1) + '-' + this.id + '" class="month unselectable"';
+=======
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 			} else {
 				gridCells += '\t\t<td id="cell' + (curMonth + 1) + '-' + this.id + '" class="month selectable"';
 			}
@@ -815,8 +868,11 @@
 				gridCells += '\t\t<td id="cell' + (curYear - startYear + 1) + '-' + this.id + '" class="year unselectable"';
 			} else if (this.options.max != null && (curYear > this.options.max.getFullYear())) {
 				gridCells += '\t\t<td id="cell' + (curYear - startYear + 1) + '-' + this.id + '" class="year unselectable"';
+<<<<<<< HEAD
 			} else if (this.options.isYearDisabled && this.options.isYearDisabled(curYear)) {
 				gridCells += '\t\t<td id="cell' + (curYear - startYear + 1) + '-' + this.id + '" class="year unselectable"';
+=======
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 			} else {
 				gridCells += '\t\t<td id="cell' + (curYear - startYear + 1) + '-' + this.id + '" class="year selectable"';
 			}
@@ -2021,8 +2077,13 @@
 	 */
 	Datepicker.prototype.handleTabOut = function(e) {
 		var fields = $('body').find('input:visible,textarea:visible,select:visible');
+<<<<<<< HEAD
 		var index = fields.index( this.$target );
 		if ( index > -1 && index < fields.length ) {
+=======
+        var index = fields.index( this.$target );
+        if ( index > -1 && index < fields.length ) {
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 			if (e.shiftKey) {
 				if (index > 0) {
 					index--;
@@ -2289,6 +2350,17 @@
 		if ($overlay.length == 0 && on) {
 			$('body').append('<div id="datepicker-overlay" class="datepicker-overlay"></div>');
 			$overlay = $('#datepicker-overlay');
+<<<<<<< HEAD
+=======
+
+/* 			// compute z-index for overlay
+			var zmax = 0;
+			$('*').each(function() {
+				var cur = parseInt($(this).css('z-index'), 10);
+				if (! isNaN(cur)) zmax = Math.max(zmax, cur);
+			});
+			$overlay.attr('z-index', zmax + 10); */
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 		}
 		if (on) {
 			$overlay.fadeIn(500);
@@ -2320,9 +2392,15 @@
 			while(element) {
 				top = top + parseInt(element.offsetTop, 10);
 				left = left + parseInt(element.offsetLeft, 10);
+<<<<<<< HEAD
 				element = element.offsetParent;	
 			}
 		}
+=======
+				element = element.offsetParent;
+			}
+	    }
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 		return {top: top, left: left};
 	} // end absolutePosition()
 
@@ -2972,6 +3050,10 @@
 		return this.options.inline;
 	} // end inline()
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 	/**
 	 *	format() is a public member function to format a date according the output format.
 	 *
@@ -2983,6 +3065,7 @@
 	} // end format()
 
 	/**
+<<<<<<< HEAD
 	 *	enable() is a public member function to enable this datepicker.
 	 */
 	Datepicker.prototype.enable = function() {
@@ -3023,6 +3106,8 @@
 	} // end datesDisabled()
 
 	/**
+=======
+>>>>>>> 5c1e673... open source fix to inline rendering of calendar
 	 *	setLocales() is a public member function which allow change the locales.
 	 *
 	 *	@param (value obj) the new locales
