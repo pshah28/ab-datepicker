@@ -249,14 +249,14 @@
 		'	</div>',
 		'	<table class="datepicker-grid" role="grid" aria-readonly="true" aria-activedescendant="datepicker-err-msg-CALENDARID" aria-labelledby="datepicker-month-CALENDARID" tabindex="0">',
 		'		<thead role="presentation">',
-		'			<tr class="datepicker-weekdays" role="row">',
-		'				<th scope="col" id="day0-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Sunday"><abbr title="Sunday">Su</abbr></th>',
-		'				<th scope="col" id="day1-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Monday"><abbr title="Monday">Mo</abbr></th>',
-		'				<th scope="col" id="day2-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Tuesday"><abbr title="Tuesday">Tu</abbr></th>',
-		'				<th scope="col" id="day3-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Wednesday"><abbr title="Wednesday">We</abbr></th>',
-		'				<th scope="col" id="day4-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Thursday"><abbr title="Thursday">Th</abbr></th>',
-		'				<th scope="col" id="day5-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Friday"><abbr title="Friday">Fr</abbr></th>',
-		'				<th scope="col" id="day6-header-CALENDARID" class="datepicker-day" role="columnheader" aria-label="Saturday"><abbr title="Saturday">Sa</abbr></th>',
+		'			<tr class="datepicker-weekdays">',
+		'				<th scope="col" id="day0-header-CALENDARID" class="datepicker-day" aria-label="Sunday"><abbr title="Sunday">Su</abbr></th>',
+		'				<th scope="col" id="day1-header-CALENDARID" class="datepicker-day" aria-label="Monday"><abbr title="Monday">Mo</abbr></th>',
+		'				<th scope="col" id="day2-header-CALENDARID" class="datepicker-day" aria-label="Tuesday"><abbr title="Tuesday">Tu</abbr></th>',
+		'				<th scope="col" id="day3-header-CALENDARID" class="datepicker-day" aria-label="Wednesday"><abbr title="Wednesday">We</abbr></th>',
+		'				<th scope="col" id="day4-header-CALENDARID" class="datepicker-day" aria-label="Thursday"><abbr title="Thursday">Th</abbr></th>',
+		'				<th scope="col" id="day5-header-CALENDARID" class="datepicker-day" aria-label="Friday"><abbr title="Friday">Fr</abbr></th>',
+		'				<th scope="col" id="day6-header-CALENDARID" class="datepicker-day" aria-label="Saturday"><abbr title="Saturday">Sa</abbr></th>',
 		'			</tr>',
 		'		</thead>',
 		'		<tbody role="presentation">',
@@ -634,7 +634,7 @@
 		this.$monthObj.html(this.locales.month_names[this.month] + ' ' + this.year);
 		this.showObject(this.$grid.find('thead'));
 		// clear the grid
-		var gridCells = '\t<tr id="row0-'+this.id+'" role="row">\n';
+		var gridCells = '\t<tr id="row0-'+this.id+'">\n';
 		// Insert the leading empty cells
 		var numEmpties = 0;
 		var weekday = this.options.firstDayOfWeek;
@@ -675,7 +675,7 @@
 			if (weekday == lastDayOfWeek && curDay < numDays) {
 				// This was the last day of the week, close it out
 				// and begin a new one
-				gridCells += '\t</tr>\n\t<tr id="row' + rowCount + '-' + this.id + '" role="row">\n';
+				gridCells += '\t</tr>\n\t<tr id="row' + rowCount + '-' + this.id + '">\n';
 				rowCount++;
 			}
 			if (curDay < numDays) {
@@ -733,7 +733,7 @@
 		this.hideObject(this.$grid.find('thead'));
 		$tbody.empty();
 		$('#datepicker-err-msg-' + this.id).empty();
-		var gridCells = '\t<tr id="row0-'+this.id+'" role="row">\n';
+		var gridCells = '\t<tr id="row0-'+this.id+'">\n';
 		var isYearDisabled = this.options.isYearDisabled && this.options.isYearDisabled(this.year);
 		// insert the months of the year.
 		for (curMonth = 0; curMonth < 12; curMonth++) {
@@ -756,7 +756,7 @@
 			gridCells += ' role="gridcell" tabindex="-1" aria-selected="false">' + this.locales.month_names_abbreviated[curMonth];
 			gridCells +=  '</td>';
 			if (curMonth == 3 || curMonth == 7) {
-				gridCells += '\t</tr>\n\t<tr id="row' + rowCount + '-' + this.id + '" role="row">\n';
+				gridCells += '\t</tr>\n\t<tr id="row' + rowCount + '-' + this.id + '">\n';
 				rowCount++;
 			}
 		}
@@ -805,7 +805,7 @@
 		this.hideObject(this.$grid.find('thead'));
 		$tbody.empty();
 		$('#datepicker-err-msg-' + this.id).empty();
-		var gridCells = '\t<tr id="row0-'+this.id+'" role="row">\n';
+		var gridCells = '\t<tr id="row0-'+this.id+'">\n';
 		// insert the months of the year.
 		for (var curYear = startYear; curYear <= endYear; curYear++) {
 			if (curYear == this.year) {
@@ -825,7 +825,7 @@
 			gridCells +=  '</td>';
 			var curPos = curYear - startYear;
 			if (curPos == 4 || curPos == 9 || curPos == 14) {
-				gridCells += '\t</tr>\n\t<tr id="row' + rowCount + '-' + this.id + '" role="row">\n';
+				gridCells += '\t</tr>\n\t<tr id="row' + rowCount + '-' + this.id + '">\n';
 				rowCount++;
 			}
 		}
@@ -3010,6 +3010,7 @@
 		}
 		var self = this;
 		$.each(dates, function(i, v) {
+			console.log("disabling ", v);
 			if (typeof v === 'string') {
 				var date = self.parseDate(v);
 				if (date !== null ) {
